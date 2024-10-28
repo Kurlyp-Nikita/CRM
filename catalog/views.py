@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import logout, login
-from .models import UserProfile
+from .models import UserProfile, Lead
 from django.contrib.auth.decorators import login_required
 from .forms import AddleadForm
 
@@ -15,7 +15,7 @@ def about(request):
 
 
 def dashboard(request):
-    return render(request, 'lead/dasboard.html')
+    return render(request, 'dasboard.html')
 
 
 def signup(request):
@@ -33,7 +33,6 @@ def signup(request):
     return render(request, 'userprofile/signup.html', data)
 
 
-@login_required
 def user_login(request):
     if request.method == 'POST':
         form = AuthenticationForm(request, data=request.POST)
@@ -62,11 +61,26 @@ def add_lead(request):
             lead = form.save(commit=False)
             lead.created_by = request.user
             lead.save()
-            return redirect('dash')
+            return redirect('dashboard')
     else:
         form = AddleadForm()
 
     data = {'form': form}
     return render(request, 'lead/lead_add.html', data)
 
+
+@login_required
+def leads_detail(request, id):
+    lead = Lead.objects.get(id=id)
+
+    data = {'lead': lead}
+    return render(request, 'lead/leads_detail.html', data)
+
+
+@login_required
+def leads_list(request):
+    leads = Lead.objects.filter(created_by=request.user)
+
+    data = {'leads': leads}
+    return render(request, 'lead/leads_list.html', data)
 
