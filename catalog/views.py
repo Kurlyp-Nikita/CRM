@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import logout, login
 from .models import UserProfile
 from django.contrib.auth.decorators import login_required
+from .forms import AddleadForm
 
 
 def index(request):
@@ -11,6 +12,10 @@ def index(request):
 
 def about(request):
     return render(request, 'about.html')
+
+
+def dashboard(request):
+    return render(request, 'lead/dasboard.html')
 
 
 def signup(request):
@@ -28,6 +33,7 @@ def signup(request):
     return render(request, 'userprofile/signup.html', data)
 
 
+@login_required
 def user_login(request):
     if request.method == 'POST':
         form = AuthenticationForm(request, data=request.POST)
@@ -49,6 +55,18 @@ def user_logout(request):
 
 @login_required
 def add_lead(request):
-    return render(request, 'lead/lead_add.html')
+    if request.method == 'POST':
+        form = AddleadForm(request.POST)
+
+        if form.is_valid():
+            lead = form.save(commit=False)
+            lead.created_by = request.user
+            lead.save()
+            return redirect('dash')
+    else:
+        form = AddleadForm()
+
+    data = {'form': form}
+    return render(request, 'lead/lead_add.html', data)
 
 
