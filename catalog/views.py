@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import logout, login
 from .models import UserProfile
+from django.contrib.auth.decorators import login_required
 
 
 def index(request):
@@ -44,3 +45,10 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     return redirect('index')
+
+
+@login_required
+def add_lead(request):
+    return render(request, 'lead/lead_add.html')
+
+

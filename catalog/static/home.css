@@ -1,3 +1,4 @@
+/* Базовая навигация */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -10,6 +11,7 @@
     transition: background-color 0.3s;
 }
 
+/* Логотип */
 .left {
     flex: 1;
 }
@@ -26,9 +28,10 @@
 .left a:hover {
     color: #1abc9c;
     text-shadow: 0 0 10px rgba(26, 188, 156, 0.6);
-    transform: scale(1.08); /* Чуть большее увеличение при наведении */
+    transform: scale(1.08);
 }
 
+/* Элементы навигации справа */
 .right {
     list-style: none;
     display: flex;
@@ -45,12 +48,13 @@
     text-decoration: none;
     padding: 10px 25px;
     border: 1px solid transparent;
-    border-radius: 30px; /* Более плавное закругление */
+    border-radius: 30px;
     font-size: 1rem;
     font-weight: 500;
     transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Ховер-эффект для ссылок */
 .right a:hover {
     background-color: #34495e;
     border-color: #1abc9c;
@@ -59,7 +63,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15), 0 0 5px rgba(26, 188, 156, 0.5);
 }
 
-/* Стиль для активной ссылки */
+/* Активная ссылка */
 .right a.active {
     background-color: #1abc9c;
     color: #ffffff;
@@ -71,22 +75,46 @@
     box-shadow: 0 6px 12px rgba(26, 188, 156, 0.6);
 }
 
-/* Стиль для кнопки Logout */
-.red a {
-    background-color: #e74c3c;
+
+/* Общий стиль для всех кнопок */
+.button-style a {
     color: #ffffff;
     padding: 10px 25px;
     font-weight: bold;
     border-radius: 30px;
+    text-decoration: none;
+    display: inline-block;
     transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+
+/* Кнопка Logout */
+.red a {
+    background-color: #e74c3c;
+    box-shadow: 0 4px 10px rgba(192, 57, 43, 0.4), 0 0 5px rgba(192, 57, 43, 0.5);
 }
 
 .red a:hover {
     background-color: #c0392b;
     transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 4px 10px rgba(192, 57, 43, 0.4), 0 0 5px rgba(192, 57, 43, 0.5);
 }
 
+/* Кнопка Add Lead */
+.add a {
+    background-color: #28a745;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15), 0 0 5px rgba(40, 167, 69, 0.5);
+}
+
+.add a:hover {
+    background-color: #218838;
+    transform: translateY(-3px) scale(1.05);
+}
+
+.add a:hover::before {
+    opacity: 1;
+}
+
+/* Стиль футера */
 .calan {
     background-color: #2a2a2a;
     color: #eaeaea;
@@ -108,18 +136,32 @@
     content: "|";
     margin: 0 8px;
     color: #3b8dbc;
-    opacity: 0.7; /* Легкая прозрачность */
+    opacity: 0.7;
 }
 
-/* Эффект при наведении на текст футера */
 .calan p:hover {
     color: #3b8dbc;
     text-shadow: 0px 0px 5px rgba(59, 141, 188, 0.6);
 }
 
-/* Анимация свечения при наведении */
 .calan p:hover::before,
 .calan p:hover::after {
     color: #1abc9c;
     text-shadow: 0px 0px 5px rgba(26, 188, 156, 0.6);
+}
+
+/* Мобильная адаптивность */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+    }
+
+    .right {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .right li a {
+        padding: 10px 20px;
+    }
 }

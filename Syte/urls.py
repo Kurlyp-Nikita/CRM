@@ -28,4 +28,6 @@ urlpatterns = [
     path('log-in/', views.user_login, name='login'),
     path('sign-up/', views.signup, name='signup'),
     path('log-out/', views.user_logout, name='logout'),
+    path('add-lead', views.add_lead, name='addlead')
+
 ]
