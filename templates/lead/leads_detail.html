@@ -2,7 +2,7 @@
 {% load static %}
 {% block head %}
     <link rel="stylesheet" href="{% static 'home.css' %}">
-    <link rel="stylesheet" href="{% static 'leads_detail.css' %}">
+    <link rel="stylesheet" href="{% static 'leads_details.css' %}">
     <title>{% block title %}{{ lead.name }}{% endblock %}</title>
 {% endblock %}
 
@@ -22,6 +22,14 @@
 
     <p>Status</p>
     <p class="value">{{ lead.get_status_display }}</p>
+
+    <p>Created at</p>
+    <p class="value">{{ lead.created_at }}</p>
+
+    <p>Modifed at</p>
+    <p class="value">{{ lead.modified_at }}</p>
+
+    <a href="{% url 'leads_list' %}">Back to leads</a>
 </div>
 
 {% endblock %}
