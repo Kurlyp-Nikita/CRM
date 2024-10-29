@@ -29,11 +29,11 @@
                     <p class="row-text">{{ lead.get_priority_display }}</p>
                     <p class="row-text">{{ lead.get_status_display }}</p>
                 </div>
+            {% empty %}
+                <p>There are no leads in the database yet...</p>
             {% endfor %}
         </div>
     </div>
 </div>
-
-
 
 {% endblock %}
