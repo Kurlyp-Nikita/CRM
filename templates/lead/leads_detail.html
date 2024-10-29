@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block head %}
-    <link rel="stylesheet" href="{% static 'home.css' %}">
+    <link rel="stylesheet" href="{% static 'hom_leads.css' %}">
     <link rel="stylesheet" href="{% static 'leads_details.css' %}">
     <title>{% block title %}{{ lead.name }}{% endblock %}</title>
 {% endblock %}
@@ -28,6 +28,11 @@
 
     <p>Modifed at</p>
     <p class="value">{{ lead.modified_at }}</p>
+
+    <hr>
+    <a class="edit" href="{% url 'leads_edit' lead.id%}">Edit Lead</a>
+    <a class="delete" href="{% url 'leads_delete' lead.id%}">Delete</a>
+    <hr>
 
     <a href="{% url 'leads_list' %}">Back to leads</a>
 </div>

@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block head %}
-    <link rel="stylesheet" href="{% static 'home.css' %}">
+    <link rel="stylesheet" href="{% static 'hom_leads.css' %}">
     <link rel="stylesheet" href="{% static 'signup.css' %}">
-    <title>{% block title %}Add Lead{% endblock %}</title>
+    <title>{% block title %}Edit Lead{% endblock %}</title>
 {% endblock %}
 
 
 {% block content %}
-    <h1>Add Lead</h1>
+    <h1>Edit Lead</h1>
 
     <form method="post" action=".">
         {% csrf_token %}
@@ -19,4 +19,3 @@
     </form>
 
 {% endblock %}
-

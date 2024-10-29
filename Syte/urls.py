@@ -29,6 +29,8 @@ urlpatterns = [
     path('sign-up/', views.signup, name='signup'),
     path('log-out/', views.user_logout, name='logout'),
     path('add-lead/', views.add_lead, name='addlead'),
-    path('leads/', views.leads_list, name='leads_list'),
-    path('leads/<int:id>/', views.leads_detail, name='leads_detail')
+    path('leads_list/', views.leads_list, name='leads_list'),
+    path('leads_detail/<int:id>/', views.leads_detail, name='leads_detail'),
+    path('leads_delete/<int:id>', views.leads_delete, name='leads_delete'),
+    path('leads_edit/<int:id>/', views.edit_lead, name='leads_edit'),
 ]

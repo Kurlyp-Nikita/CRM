@@ -1,9 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import logout, login
 from .models import UserProfile, Lead
 from django.contrib.auth.decorators import login_required
 from .forms import AddleadForm
+from django.contrib import messages
 
 
 def index(request):
@@ -53,6 +54,36 @@ def user_logout(request):
 
 
 @login_required
+def leads_delete(request, id):
+    lead = Lead.objects.get(id=id)
+    lead.delete()
+
+    messages.success(request, 'The lead was deleted.')
+    return redirect('leads_list')
+
+
+@login_required
+def edit_lead(request, id):
+    lead = get_object_or_404(Lead, id=id)
+
+    if request.method == 'POST':
+        form = AddleadForm(request.POST, instance=lead)
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'The changes were saved.')
+            return redirect('leads_list')
+        else:
+            messages.error(request, 'Please correct the errors below.')
+
+    else:
+        form = AddleadForm(instance=lead)
+
+    data = {'form': form}
+    return render(request, 'lead/edit_leads.html', data)
+
+
+@login_required
 def add_lead(request):
     if request.method == 'POST':
         form = AddleadForm(request.POST)
@@ -61,12 +92,13 @@ def add_lead(request):
             lead = form.save(commit=False)
             lead.created_by = request.user
             lead.save()
-            return redirect('dashboard')
+            messages.success(request, 'The lead was create.')
+            return redirect('leads_list')
     else:
         form = AddleadForm()
 
     data = {'form': form}
-    return render(request, 'lead/lead_add.html', data)
+    return render(request, 'lead/add_lead.html', data)
 
 
 @login_required

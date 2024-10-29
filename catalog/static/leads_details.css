@@ -4,7 +4,7 @@
     border-radius: 18px;
     padding: 40px;
     max-width: 600px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 15px 35px rgba(255, 255, 255, 0.1);
     margin: 50px auto;
     text-align: center;
     font-family: Arial, sans-serif;
@@ -15,15 +15,15 @@
 .lead-card h1 {
     font-size: 2.6rem;
     color: #f7b731; /* Яркий акцентный цвет */
-    margin-bottom: 30px;
-    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
 }
 
 /* Метки и описания */
 .lead-card p {
     font-size: 1.4rem;
-    color: #f0f3f5;
-    font-weight: 500;
+    color: #1c70c4; /* Голубой цвет для четкости */
+    font-weight: 600;
     margin: 20px 0 10px;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -31,46 +31,81 @@
 
 /* Стиль для текстовых значений */
 .lead-card .value {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     color: #1a1a2e;
-    background-color: #f0f3f5;
+    background-color: #ffffff;
     padding: 15px;
-    border-radius: 12px;
+    border-radius: 10px;
     margin-bottom: 20px;
-    transition: background 0.3s, transform 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 /* Эффект при наведении на значения */
 .lead-card .value:hover {
-    background-color: #d1d8e0;
+    background-color: #f0f3f5;
     transform: translateY(-3px);
 }
 
 /* Стиль для описания */
 .lead-card .description {
     font-size: 1.3rem;
-    color: #d1d8e0;
-    background-color: rgba(0, 0, 0, 0.15);
+    color: #130303;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 10px;
 }
 
-/* Стиль для ссылки "Back to leads" */
+/* Разделитель */
+.lead-card hr {
+    border: none;
+    height: 1px;
+    background: #f7b731;
+    opacity: 0.6;
+    margin: 20px 0;
+}
+
+/* Кнопка удаления */
+.lead-card a.delete {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 50px;
+    background: linear-gradient(90deg, #d21212, #f731a1, #f02b4f);
+    background-size: 200%;
+    transition: background-position 0.5s, box-shadow 0.3s, transform 0.3s;
+    box-shadow: 0 8px 20px rgba(240, 43, 79, 0.4);
+}
+
+/* Эффект при наведении на кнопку удаления */
+.lead-card a.delete:hover {
+    background-position: 100%;
+    box-shadow: 0 10px 25px rgba(240, 43, 79, 0.5);
+    transform: translateY(-3px);
+}
+
+/* Кнопка "Back to leads" */
 .lead-card a {
     display: inline-block;
     margin-top: 20px;
     padding: 12px 30px;
     font-size: 1.2rem;
-    color: #fff;
+    color: #ffffff;
     text-decoration: none;
     border-radius: 50px;
     background: linear-gradient(90deg, #f0932b, #f7b731, #f0932b);
     background-size: 200%;
     transition: background-position 0.5s, box-shadow 0.3s, transform 0.3s;
-    box-shadow: 0 8px 20px rgba(247, 183, 49, 0.3);
+    box-shadow: 0 8px 20px rgba(247, 183, 49, 0.4);
 }
 
-/* Анимация переливающегося эффекта */
+/* Переливающийся эффект на кнопке "Back to leads" */
 .lead-card a:hover {
     background-position: 100%;
-    box-shadow: 0 10px 25px rgba(247, 183, 49, 0.4);
+    box-shadow: 0 10px 25px rgba(247, 183, 49, 0.5);
     transform: translateY(-3px);
 }
+
