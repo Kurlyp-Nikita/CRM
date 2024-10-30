@@ -35,4 +35,5 @@ urlpatterns = [
     path('leads_edit/<int:id>/', views.edit_lead, name='leads_edit'),
     path('convert_lead/<int:id>/', views.convert_to_client, name='convert_lead'),
     path('clients_list', views.clients_list, name='clients_list'),
+    path('clients_detail<int:id>', views.clients_detail, name='clients_detail'),
 ]

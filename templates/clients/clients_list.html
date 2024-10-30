@@ -22,7 +22,7 @@
                 {% for client in clients %}
                     <div class="table-row">
                         <p class="row-text">
-                            <a>{{ client.name }}</a>
+                            <a href="{% url 'clients_detail' client.id %}">{{ client.name }}</a>
                         </p>
                     </div>
                 {% empty %}

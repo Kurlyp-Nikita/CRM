@@ -140,3 +140,11 @@ def clients_list(request):
 
     data = {'clients': clients}
     return render(request, 'clients/clients_list.html', data)
+
+
+@login_required
+def clients_detail(request, id):
+    client = get_object_or_404(Client, id=id)
+
+    data = {'client': client}
+    return render(request, 'clients/clients_list.html', data)
