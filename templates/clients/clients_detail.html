@@ -21,7 +21,7 @@
     <p class="value">{{ client.modified_at }}</p>
 
     <hr>
-    <a class="edit">Edit</a>
+    <a class="edit" href="{% url 'clients_edit' client.id %}">Edit</a>
     <a class="delete">Delete</a>
     <hr>
 

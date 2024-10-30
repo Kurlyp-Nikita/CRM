@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import logout, login
 from .models import UserProfile, Lead, Client
 from django.contrib.auth.decorators import login_required
-from .forms import AddleadForm
+from .forms import AddleadForm, AddClientForm
 from django.contrib import messages
 
 
@@ -148,3 +148,42 @@ def clients_detail(request, id):
 
     data = {'client': client}
     return render(request, 'clients/clients_list.html', data)
+
+
+@login_required
+def add_client(request):
+    if request.method == 'POST':
+        form = AddClientForm(request.POST)
+
+        if form.is_valid():
+            client = form.save(commit=False)
+            client.created_by = request.user
+            client.save()
+            messages.success(request, 'The lead was create.')
+            return redirect('clients_list')
+    else:
+        form = AddClientForm()
+
+    data = {'form': form}
+    return render(request, 'clients/add_client.html', data)
+
+
+@login_required
+def edit_client(request, id):
+    client = get_object_or_404(Client, id=id)
+
+    if request.method == 'POST':
+        form = AddClientForm(request.POST, instance=client)
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'The changes were saved.')
+            return redirect('clients_list')
+        else:
+            messages.error(request, 'Please correct the errors below.')
+
+    else:
+        form = AddleadForm(instance=client)
+
+    data = {'form': form}
+    return render(request, 'clients/edit_client.html', data)
