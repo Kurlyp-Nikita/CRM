@@ -115,20 +115,24 @@
     transform: translateY(-3px);
 }
 
-.convert {
+.lead-card a.convert {
     display: inline-block;
-    padding: 10px 20px;
-    background-color: #007bff; /* Начальный синий цвет */
-    color: #fff; /* Белый цвет текста */
-    font-size: 16px;
+    margin-top: 20px;
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    color: #ffffff;
     text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.5s, box-shadow 0.5s;
+    border-radius: 50px;
+    background: linear-gradient(90deg, #141cd7, #3c58e7, #25459b);
+    background-size: 200%;
+    transition: background-position 0.5s, box-shadow 0.3s, transform 0.3s;
+    box-shadow: 0 8px 20px rgba(43, 89, 240, 0.4);
 }
 
-.convert:hover {
-    background-color: #0056b3; /* Цвет при наведении */
-    box-shadow: 0px 4px 15px rgba(0, 91, 187, 0.4);
+.lead-card a.convert:hover {
+    background-position: 100%;
+    box-shadow: 0 10px 25px rgba(43, 59, 240, 0.5);
+    transform: translateY(-3px);
 }
 
 /* Кнопка "Back to leads" */

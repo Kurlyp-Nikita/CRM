@@ -17,12 +17,15 @@
         <p class="value description">{{ client.description }}</p>
     {% endif %}
 
+    <p>Created at</p>
+    <p class="value">{{ client.cre }}</p>
+
     <p>Modifed at</p>
     <p class="value">{{ client.modified_at }}</p>
 
     <hr>
     <a class="edit" href="{% url 'clients_edit' client.id %}">Edit</a>
-    <a class="delete">Delete</a>
+    <a class="delete" href="{% url 'clients_delete' client.id %}">Delete</a>
     <hr>
 
     <a class="back" href="{% url 'clients_list' %}">Back to clients</a>

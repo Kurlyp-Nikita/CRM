@@ -147,7 +147,7 @@ def clients_detail(request, id):
     client = get_object_or_404(Client, id=id)
 
     data = {'client': client}
-    return render(request, 'clients/clients_list.html', data)
+    return render(request, 'clients/clients_detail.html', data)
 
 
 @login_required
@@ -187,3 +187,12 @@ def edit_client(request, id):
 
     data = {'form': form}
     return render(request, 'clients/edit_client.html', data)
+
+
+@login_required
+def clients_delete(request, id):
+    client = Client.objects.get(id=id)
+    client.delete()
+
+    messages.success(request, 'The lead was deleted.')
+    return redirect('clients_list')
