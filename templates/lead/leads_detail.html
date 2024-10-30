@@ -30,6 +30,7 @@
     <p class="value">{{ lead.modified_at }}</p>
 
     <hr>
+    <a class="convert" href="{% url 'convert_lead' lead.id%}">Convert to client</a>
     <a class="edit" href="{% url 'leads_edit' lead.id%}">Edit Lead</a>
     <a class="delete" href="{% url 'leads_delete' lead.id%}">Delete</a>
     <hr>

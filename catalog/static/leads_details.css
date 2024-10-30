@@ -115,6 +115,22 @@
     transform: translateY(-3px);
 }
 
+.convert {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff; /* Начальный синий цвет */
+    color: #fff; /* Белый цвет текста */
+    font-size: 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.5s, box-shadow 0.5s;
+}
+
+.convert:hover {
+    background-color: #0056b3; /* Цвет при наведении */
+    box-shadow: 0px 4px 15px rgba(0, 91, 187, 0.4);
+}
+
 /* Кнопка "Back to leads" */
 .lead-card a.back.back {
     display: inline-block;

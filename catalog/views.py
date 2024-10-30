@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import logout, login
-from .models import UserProfile, Lead
+from .models import UserProfile, Lead, Client
 from django.contrib.auth.decorators import login_required
 from .forms import AddleadForm
 from django.contrib import messages
@@ -111,8 +111,25 @@ def leads_detail(request, id):
 
 @login_required
 def leads_list(request):
-    leads = Lead.objects.filter(created_by=request.user)
+    leads = Lead.objects.filter(created_by=request.user, converted_to_client=False)
 
     data = {'leads': leads}
     return render(request, 'lead/leads_list.html', data)
+
+
+@login_required
+def convert_to_client(request, id):
+    lead = get_object_or_404(Lead, id=id)
+    client = Client.objects.create(
+        name=lead.name,
+        email=lead.email,
+        description=lead.description,
+        created_by=request.user
+    )
+
+    lead.converted_to_client = True
+    lead.save()
+    messages.success(request, 'The lead converted to client.')
+
+    return redirect('leads_list')
 

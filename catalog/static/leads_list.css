@@ -1,6 +1,6 @@
 /* Фон страницы */
 .page-background {
-    background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+    background: linear-gradient(to right, #ffffff, #ffffff);
     padding: 60px 20px;
     min-height: 100vh;
     display: flex;
