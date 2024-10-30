@@ -131,5 +131,12 @@ def convert_to_client(request, id):
     lead.save()
     messages.success(request, 'The lead converted to client.')
 
-    return redirect('leads_list')
+    return redirect('clients_list')
 
+
+@login_required
+def clients_list(request):
+    clients = Client.objects.filter(created_by=request.user)
+
+    data = {'clients': clients}
+    return render(request, 'clients/clients_list.html', data)
